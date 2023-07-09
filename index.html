@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Prixmelogoless - Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fade-in 1s forwards;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    p {
+      font-size: 24px;
+      opacity: 0;
+      animation: fade-in 1s forwards;
+    }
+
+    .vhs-effect {
+      display: inline-block;
+      position: relative;
+    }
+
+    .vhs-effect:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background-image: url('https://cdn.pixabay.com/photo/2018/02/08/22/27/vhs-3132158_960_720.png');
+      background-size: cover;
+      mix-blend-mode: lighten;
+      opacity: 0.7;
+      z-index: -1;
+      animation: vhs-effect 1s infinite;
+    }
+
+    @keyframes vhs-effect {
+      0% {
+        transform: translateX(-5px) rotate(-2deg) scale(1.02);
+      }
+      50% {
+        transform: translateX(5px) rotate(2deg) scale(0.98);
+      }
+      100% {
+        transform: translateX(-5px) rotate(-2deg) scale(1.02);
+      }
+    }
+
+    .crt-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 1px,
+        rgba(255, 255, 255, 0.05) 2px,
+        rgba(255, 255, 255, 0.05) 3px
+      );
+      animation: crt-lines-animation 5s linear infinite;
+    }
+
+    @keyframes crt-lines-animation {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 -100vh;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+    }
+
+    .menu a {
+      color: #666666;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s, transform 0.3s;
+      font-weight: 300;
+    }
+
+    .menu a:hover {
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333333;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      opacity: 0;
+      animation: fade-in 1s forwards;
+    }
+
+    .button a:hover {
+      background-color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <div class="crt-lines"></div>
+  <div class="menu">
+    <a href="#">Home</a>
+    <a href="#">Scenepacks</a>
+    <a href="#">About</a>
+  </div>
+  <div class="container">
+    <h1 class="vhs-effect">Prixmelogoless</h1>
+    <p class="fade-in">Coming Soon</p>
+    <div class="button">
+      <a href="https://www.instagram.com/prixmelogoless/">Instagram</a>
+    </div>
+  </div>
+</body>
+</html>
