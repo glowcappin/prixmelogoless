@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Product Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px; /* Adjust the max-width of the container */
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .menu {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+    }
+
+    .menu a {
+      color: #666666;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s, transform 0.3s;
+      font-weight: 300;
+    }
+
+    .menu a:hover {
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .crt-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 1px,
+        rgba(255, 255, 255, 0.05) 2px,
+        rgba(255, 255, 255, 0.05) 3px
+      );
+      animation: crt-lines-animation 5s linear infinite;
+    }
+
+    @keyframes crt-lines-animation {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 -100vh;
+      }
+    }
+
+    .header,
+    .product,
+    .footer {
+      opacity: 0;
+      animation: fade-in 1s forwards;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px; /* Decrease the gap between product items */
+  margin-bottom: 40px;
+}
+
+
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-image {
+  width: 100%; /* Adjust the width of the product image */
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+
+  .menu {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+    }
+
+    .menu a {
+      color: #666666;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s, transform 0.3s;
+      font-weight: 300;
+    }
+
+    .menu a:hover {
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-details {
+      text-align: center;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .product-description {
+      margin-bottom: 20px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #333333;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #666666;
+    }
+
+    .footer {
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 14px;
+      color: #888888;
+    }
+    
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    #logo-changer {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    pointer-events: true;
+    
+    
+  }
+  </style>
+</head>
+<body>
+  <div class="crt-lines"></div>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="scenepacks.html">Scenepacks</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h1>Miscellaneous</h1>
+      <p>Everything miscellaneous, unfit for other categories.</p>
+    </div>
+    <a href="index.html">
+      <img src="https://cdn.discordapp.com/attachments/1127114075776753677/1128224667589681252/prixmelogoless_00000_00000.png" title="source: imgur.com" alt="{{$lang.project_name}}" id="logo-changer"/>
+    </a>
+    <div id="products-container">
+      <div class="product-grid">
+ 
+        </div>
+</body>
+</html>
