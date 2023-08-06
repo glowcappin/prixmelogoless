@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scenepacks - Prixmelogoless</title>
+  <link rel="icon" type="image/png" href="https://i.imgur.com/7nc04Lw.png"/>
+  <meta content="Prixmelogoless" property="og:title" />
+  <meta content="4K Scenepacks and more." property="og:description" />
+  <meta content="https://prixmelogoless.com/scenepacks.html" property="og:url" />
+  <meta content="https://i.imgur.com/7nc04Lw.png" property="og:image" />
+  <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+  <meta name="theme-color" content="#ff0000">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      z-index: 999;
+    }
+
+    .nav a {
+      color: #666666;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: color 0.3s, transform 0.3s;
+      font-weight: 300;
+    }
+
+    .nav a:hover {
+      color: white;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 48px;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .logo-video {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .category {
+      margin: 10px;
+      padding: 10px 20px;
+      border: 2px solid #2c2e2d;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      text-decoration: none;
+      outline: none;
+      background-color: transparent;
+    }
+
+    .category:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background-image: url('https://cdn.pixabay.com/photo/2018/02/08/22/27/vhs-3132158_960_720.png');
+      background-size: cover;
+      mix-blend-mode: lighten;
+      opacity: 0.7;
+      z-index: -1;
+      animation: vhs-effect 1s infinite;
+    }
+
+    @keyframes vhs-effect {
+      0% {
+        transform: translateX(-5px) rotate(-2deg) scale(1.02);
+      }
+      50% {
+        transform: translateX(5px) rotate(2deg) scale(0.98);
+      }
+      100% {
+        transform: translateX(-5px) rotate(-2deg) scale(1.02);
+      }
+    }
+
+    .category:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .crt-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 1px,
+        rgba(255, 255, 255, 0.05) 2px,
+        rgba(255, 255, 255, 0.05) 3px
+      );
+      animation: crt-lines-animation 5s linear infinite;
+    }
+
+    @keyframes crt-lines-animation {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 -100vh;
+      }
+    }
+
+    #logo-changer {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    pointer-events: true;
+  }
+  </style>
+</head>
+<body>
+  <a href="index.html">
+    <img src="https://cdn.discordapp.com/attachments/1127114075776753677/1128224667589681252/prixmelogoless_00000_00000.png" title="source: imgur.com" alt="{{$lang.project_name}}" id="logo-changer"/>
+  </a>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="scenepacks.html">Scenepacks</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <h1>Scenepacks</h1>
+
+  <div class="categories">
+    <a class="category" href="marvel.html">Marvel</a>
+    <a class="category" href="dc.html">DC</a>
+    <a class="category" href="disney.html">Disney</a>
+    <a class="category" href="anime.html">Anime</a>
+    <a class="category" href="games.html">Games</a>
+    <a class="category" href="misc.html">Misc</a>
+    <a class="category" href="all.html">All</a>
+  </div>
+  <div class="crt-lines"></div>
+</body>

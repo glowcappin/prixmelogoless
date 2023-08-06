@@ -3,14 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Prixmelogoless - Coming Soon</title>
-  <link rel="icon" type="image/png" href="https://i.imgur.com/7nc04Lw.png"/>
-  <meta content="Prixmelogoless" property="og:title" />
-  <meta content="4K Scenepacks and more." property="og:description" />
-  <meta content="https://prixmelogoless.com" property="og:url" />
-  <meta content="https://i.imgur.com/7nc04Lw.png" property="og:image" />
-  <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-  <meta name="theme-color" content="#ff0000">
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -49,8 +41,6 @@
 
     p {
       font-size: 24px;
-      opacity: 0;
-      animation: fade-in 1s forwards;
     }
 
     .vhs-effect {
@@ -132,9 +122,17 @@
       transform: scale(1.1);
     }
 
-    .button {
-      display: inline-block;
+    .button-container {
       margin-top: 20px;
+    }
+
+    .button-container .button {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .button-container .button:last-child {
+      margin-right: 0;
     }
 
     .button a {
@@ -145,37 +143,142 @@
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s;
-      opacity: 0;
-      animation: fade-in 1s forwards;
     }
 
     .button a:hover {
       background-color: #666666;
     }
 
-    .logo {
+    .logo-video {
       position: absolute;
       top: 20px;
       left: 20px;
       width: 150px;
       height: 150px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .search-bar input[type="text"] {
+      padding: 5px 10px;
+      font-size: 16px;
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
+
+    .search-bar input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .search-bar button[type="button"] {
+      padding: 5px 10px;
+      background-color: #333333;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .search-bar button[type="button"]:hover {
+      background-color: #666666;
     }
   </style>
 </head>
 <body>
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search...">
+    <button type="button" onclick="performSearch()">Search</button>
+  </div>
   <div class="crt-lines"></div>
   <div class="menu">
     <a href="#">Home</a>
-    <a href="DC.html">Scenepacks</a>
-    <a href="#">About</a>
+    <a href="scenepacks.html">Scenepacks</a>
+    <a href="about.html">About</a>
   </div>
   <div class="container">
     <h1 class="vhs-effect">Prixmelogoless</h1>
-    <p class="fade-in">Coming Soon</p>
-    <div class="button">
-      <a href="https://www.instagram.com/prixmelogoless/">Instagram</a>
+    <div class="button-container">
+      <div class="button">
+        <a href="scenepacks.html">Scenepacks</a>
+      </div>
+      <div class="button">
+        <a href="https://mega.nz/folder/t1UXnKSI#xoagZCK2sarS4O9Lvq1yCw">Full Movies</a>
+      </div>
+      <div class="button">
+        <a href="https://mega.nz/folder/U5l0maab#Pg9ueHpUDEYSWTBaej-HDw">Full TV Shows</a>
+      </div>
     </div>
-    <img src="https://i.imgur.com/7nc04Lw.png" alt="Logo" class="logo">
+    <video class="logo-video" src="https://cdn.discordapp.com/attachments/1127114075776753677/1128237279253635082/prixmeweb.webm" autoplay loop muted></video>
   </div>
+  <script>
+  async function performSearch() {
+    const searchInput = document.getElementById('search-input');
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    if (searchTerm !== '') {
+      const pageURLs = [
+        'scenepacks.html',
+        'about.html',
+        'DC.html',
+        'marvel.html',
+        'disney.html',
+        'anime.html',
+        'games.html',
+        'Misc.html'
+        // Add more page URLs here
+      ];
+
+      for (const url of pageURLs) {
+        const pageContent = await fetchPageContent(url);
+        const matchingElement = findMatchingElement(pageContent, searchTerm);
+        if (matchingElement) {
+          // Pass the search term as a URL parameter
+          window.location.href = `${url}?searchTerm=${encodeURIComponent(searchTerm)}`;
+          return;
+        }
+      }
+
+      alert('No results found for the search term.');
+    }
+  }
+  
+    async function fetchPageContent(url) {
+      try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        return doc;
+      } catch (error) {
+        console.error('Error fetching page content:', error);
+        return null;
+      }
+    }
+  
+    function findMatchingElement(doc, searchTerm) {
+      const elements = doc.querySelectorAll('body *');
+      for (const element of elements) {
+        if (element.innerText.toLowerCase().includes(searchTerm)) {
+          return element;
+        }
+      }
+      return null;
+    }  </script>
+  
 </body>
 </html>
